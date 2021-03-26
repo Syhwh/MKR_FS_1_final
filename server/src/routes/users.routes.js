@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const router = Router();
 
 const {
-  getUsers, getUser, createUser, editUser, deleteUser, loginUser
+  getUsers, getUser, createUser, editUser, deleteUser, loginUser,
 } = require('../controllers/users.controllers');
 const { authMiddleware } = require('../helpers/authMiddleware');
 

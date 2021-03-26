@@ -4,7 +4,7 @@ const UserSchema = new Schema({
   name: {
     type: String,
     trim: true,
-    default: ''
+    default: '',
   },
   email: {
     type: String,
@@ -28,7 +28,7 @@ const UserSchema = new Schema({
   profilePicture: {
     type: String,
     require: false,
-    default: ''
+    default: '',
   },
 });
 
