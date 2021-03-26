@@ -24,6 +24,14 @@ Usuarios API /login -/signup - /user
 Proyectos API /projects -> get, post, put, delete.
 Tareas API /tasks -> get, post, put, delete.
 
+***************
+
+Modelo Tarea
+title -> string
+status -> boolean
+referencia al modelo del projecto
+
+
 ```
 
 ```
