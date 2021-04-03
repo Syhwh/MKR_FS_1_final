@@ -2,14 +2,13 @@ const Project = require('../Models/project.model');
 
 const getProjects = async (req, res) => {
   try {
-    console.log('req.payload', req.payload)
+    console.log('req.payload', req.payload);
     const projects = await Project.find({ createdBy: req.payload });
 
     res.send(projects);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-
 };
 const createProject = async (req, res) => {
   const { name } = req.body;

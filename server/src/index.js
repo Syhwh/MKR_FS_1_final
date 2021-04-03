@@ -1,5 +1,8 @@
 /* eslint-disable no-console */
 const express = require('express');
+const morgan = require('morgan');
+const createError = require('http-errors');
+require('dotenv').config();
 
 const app = express();
 
@@ -8,12 +11,31 @@ require('./database/database.config');
 
 const usersRouter = require('./routes/users.routes');
 const projectsRouter = require('./routes/projects.routes');
+const authRouter = require('./routes/auth.routes');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 // routes
 app.use(usersRouter);
 app.use(projectsRouter);
+app.use(authRouter);
 
-// TODO: crear vaariable de entorno
-app.listen(3000, () => console.log('running in port 3000'));
+// Error handler
+app.use(async (req, res, next) => {
+  next(createError.NotFound());
+});
+
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    error: {
+      status: err.status || 500,
+      message: err.message,
+    },
+  });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running in port ${PORT}`));
