@@ -1,13 +1,13 @@
 const { Schema, model } = require('mongoose');
 
-const ProjectSchema = new Schema({
-  projectTitle: {
+const TaskSchema = new Schema({
+  task: {
     type: String,
     require: true,
   },
-  projectDescription: {
-    type: String,
-    default: '',
+  status: {
+    type: Boolean,
+    default: false,
   },
   createdAt: {
     type: Date,
@@ -17,11 +17,11 @@ const ProjectSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  createdBy: {
+  project: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Project',
   },
 
 });
 
-module.exports = model('Project', ProjectSchema);
+module.exports = model('Task', TaskSchema);
