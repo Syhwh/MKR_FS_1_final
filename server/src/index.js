@@ -11,6 +11,7 @@ require('./database/database.config');
 
 const usersRouter = require('./routes/users.routes');
 const projectsRouter = require('./routes/projects.routes');
+const tasksRouter = require('./routes/tasks.routes');
 const authRouter = require('./routes/auth.routes');
 
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 // routes
 app.use(usersRouter);
 app.use(projectsRouter);
+app.use(tasksRouter);
 app.use(authRouter);
 
 // Error handler

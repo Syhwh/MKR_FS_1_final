@@ -7,7 +7,7 @@ const getProjects = async (req, res, next) => {
     if (!userId) throw createError.Unauthorized('unauthorized');
     const projects = await Project.find({ createdBy: userId });
 
-    res.status(200).send(projects);
+    res.status(200).json(projects);
   } catch (error) {
     next(error);
   }
