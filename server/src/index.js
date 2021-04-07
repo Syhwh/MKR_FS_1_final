@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const createError = require('http-errors');
 require('dotenv').config();
 
@@ -17,6 +18,7 @@ const authRouter = require('./routes/auth.routes');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+app.use(cors());
 
 // routes
 app.use(usersRouter);
@@ -39,5 +41,5 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running in port ${PORT}`));
