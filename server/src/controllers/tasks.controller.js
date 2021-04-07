@@ -9,6 +9,7 @@ const getTasks = async (req, res, next) => {
     const { projectId } = req.body;
 
     if (!projectId) throw createError.NotFound('Project doesn\'t exists ');
+
     const tasks = await Task.find({ projectId });
 
     res.status(200).json(tasks);
@@ -25,7 +26,7 @@ const createTask = async (req, res, next) => {
 
     if (!projectId) throw createError.NotFound('Project doesn\'t exists ');
 
-    const newTask = new Task({ task });
+    const newTask = new Task({ task, projectId });
     const taskSaved = await newTask.save();
     res.status(201).json(taskSaved);
   } catch (error) {
@@ -44,6 +45,7 @@ const editTask = async (req, res, next) => {
     if (!projectId) throw createError.NotFound('Project doesn\'t exists ');
 
     if (!taskId) throw createError.BadRequest('not task id provided');
+    if (taskId.length < 24) throw createError.BadRequest('invalid task id format');
 
     const currentTask = await Task.findOne({ _id: taskId });
     if (!currentTask) throw createError.NotFound('Task doesn\'t exists ');
@@ -76,6 +78,8 @@ const deleteTask = async (req, res, next) => {
     if (!projectId) throw createError.NotFound('Project doesn\'t exists ');
 
     if (!taskId) throw createError.BadRequest('not task id provided');
+
+    if (taskId.length < 24) throw createError.BadRequest('invalid task id format');
 
     const task = await Task.findOne({ _id: taskId });
     if (!task) throw createError.NotFound('Task doesn\'t exists ');

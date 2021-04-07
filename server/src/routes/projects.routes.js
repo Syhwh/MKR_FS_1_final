@@ -4,7 +4,8 @@ const {
   getProjects, createProject, editProject, deleteProject,
 } = require('../controllers/projects.controller');
 
-const { projectValidationRules, validate } = require('../middlewares/projectValidator');
+const { projectValidationRules } = require('../middlewares/projectValidator');
+const { validate } = require('../middlewares/validate');
 
 const router = Router();
 

@@ -4,7 +4,8 @@ const {
   getTasks, createTask, editTask, deleteTask,
 } = require('../controllers/tasks.controller');
 
-const { taskValidationRules, validate } = require('../middlewares/taskValidator');
+const { taskValidationRules } = require('../middlewares/taskValidator');
+const { validate } = require('../middlewares/validate');
 
 const router = Router();
 

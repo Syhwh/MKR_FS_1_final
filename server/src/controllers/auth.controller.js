@@ -13,7 +13,7 @@ const signupUser = async (req, res, next) => {
 
     const savedUser = await user.save();
     const userToken = await accessToken(savedUser.id);
-    res.status(201).send(userToken);
+    res.status(201).json({ token: userToken });
   } catch (error) {
     next(error);
   }
@@ -24,15 +24,14 @@ const loginUser = async (req, res, next) => {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) {
-      if (!user) throw createError.NotFound('user not found');
-    }
+
+    if (!user) throw createError.NotFound('user not found');
 
     const isMatch = await user.isValidPassword(password);
     if (!isMatch) throw createError.Unauthorized('invalid Username/password');
 
     const userToken = await accessToken(user.id);
-    res.send(userToken);
+    res.status(200).json({ token: userToken });
   } catch (error) {
     next(error);
   }

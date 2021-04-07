@@ -11,7 +11,7 @@ const authMiddleware = (req, res, next) => {
     if (!authorization) throw createError.Unauthorized('no auth token provided');
 
     jwt.verify(authorization, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
-      if (err) throw createError.Unauthorized('unauthorized token');
+      if (err) throw createError.Unauthorized('invalid token');
       req.payload = payload;
       next();
     });
