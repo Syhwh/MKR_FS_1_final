@@ -7,7 +7,7 @@ const signupUser = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const emailExist = await User.findOne({ email });
-    if (emailExist) throw createError.Conflict('the email is already been registered');
+    if (emailExist) throw createError.Conflict('This email address is already being used');
 
     const user = new User({ email, password });
 

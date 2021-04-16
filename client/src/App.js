@@ -1,11 +1,18 @@
+import { AppRouter } from './routers/AppRouter';
+import { AuthContextProvider } from './Global/Context/AuthContextProvider';
 import './App.css';
-import { SignupContainer } from './components/SignupContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ProjectsContextProvider } from './Global/Context/ProjectsContextProvider';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <SignupContainer />
-    </div>
+
+    <AuthContextProvider>
+      <ProjectsContextProvider>
+        <AppRouter />
+
+      </ProjectsContextProvider>
+    </AuthContextProvider>
   );
 }
 
