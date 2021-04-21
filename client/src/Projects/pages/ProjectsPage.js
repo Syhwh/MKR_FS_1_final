@@ -26,6 +26,9 @@ export const ProjectsPage = () => {
 	const handleEdit = (id) => {
 		history.push(`/projects/${id}`)
 	}
+	const handleShowTasks = (id) => {
+		history.push(`/projects/${id}/tasks`)
+	}
 	const handleDelete = (id) => {
 		setShowConfirmationModal(true)
 		setProjectId(id)
@@ -36,7 +39,9 @@ export const ProjectsPage = () => {
 		deleteProject(projectId)
 		setShowConfirmationModal(false)
 	};
-
+const handleCreateTask=(id)=>{
+	history.push(`/projects/${id}/tasks/create`)
+}
 
 	if (!projects) return <h2>Loading...</h2>
 	return (<>
@@ -57,10 +62,9 @@ export const ProjectsPage = () => {
 				handleEdit={handleEdit}
 				showForm={showForm}
 				setShowForm={setShowForm}
+				createTask={handleCreateTask}
+				showTasks={handleShowTasks}
 			/>
-<div>
-	Show tasks
-</div>
 
 
 	</>)

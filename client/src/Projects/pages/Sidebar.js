@@ -2,7 +2,7 @@ import React from 'react'
 import { CreateProjectContainer } from '../components/CreateProjectContainer'
 import { ProjectsList } from '../components/ProjectsList'
 import './sidebar.css'
-export const Sidebar = ({ projects, handleDelete, handleEdit, showForm, setShowForm }) => {
+export const Sidebar = ({ projects, handleDelete, handleEdit, showForm, setShowForm,createTask,showTasks }) => {
 
 	return (
 		<aside className='journal__sidebar'>
@@ -29,6 +29,8 @@ export const Sidebar = ({ projects, handleDelete, handleEdit, showForm, setShowF
 						projects={projects}
 						handleDelete={handleDelete}
 						handleEdit={handleEdit}
+						createTask={createTask}
+						showTasks={showTasks}
 					/>
 				</div>
 			</div>

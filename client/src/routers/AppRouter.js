@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { AuthContext } from '../Global/Context/AuthContext';
 import { PrivateRoute } from './PrivateRoute';
@@ -10,18 +10,12 @@ import { MainPage } from '../Global/MainPage';
 import { LoginPage } from '../Authentication/pages/LoginPage';
 
 import { ProjectsRouter } from './ProjectsRouter';
-import { CreateProjectContainer } from '../Projects/components/CreateProjectContainer';
 import { HomeNavigation } from '../Global/Navigation/HomeNavigation';
-import { PublicRoutes } from './PublicRoutes';
 import { AppNavigation } from '../Global/Navigation/AppNavigation';
 import { Home } from '../Global/Home';
 
-
 export const AppRouter = () => {
-
   const { user } = useContext(AuthContext);
-
-  console.log('user in router', user)
   return (<>
     {user ? <AppNavigation /> : <HomeNavigation />}
     <Router>
@@ -38,14 +32,13 @@ export const AppRouter = () => {
             component={LoginPage}
             isAuthenticated={user}
           />
-
           <PublicRoute
             exact
             path='/signup'
             component={AuthenticationPage}
             isAuthenticated={user}
           />
-          {user ? <PublicRoute
+          { user ? <PublicRoute
             path='/'
             component={Home}
           /> :
@@ -53,8 +46,6 @@ export const AppRouter = () => {
               path='/'
               component={MainPage}
             />}
-
-
         </Switch>
       </div>
     </Router>
