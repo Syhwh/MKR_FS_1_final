@@ -29,13 +29,11 @@ export const TasksContainer = () => {
 
 	return (
 		<Container>
-
 			<TaskForm
 				handleChange={handleChange}
 				task={task}
 				handleCancel={handleCancel}
 				handleSubmit={handleSubmit}
-
 			/>
 		</Container>
 	)

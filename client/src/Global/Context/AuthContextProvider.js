@@ -32,7 +32,8 @@ console.log('initial state', user)
 
 	const logout = (user) => {
 		if (user) {
-			localStorage.removeItem('token')
+			localStorage.removeItem('token');
+			setUser(null)
 		}
 	}
 

@@ -16,7 +16,7 @@ export const TaskForm = ({ handleChange, task, handleCancel, handleSubmit }) => 
 				/>
 			</Form.Group>
 
-			<Row className="justify-content-md-center">
+			<Row className='justify-content-md-center'>
 				<Col xs={6} md={4}>
 					<Button
 						onClick={handleCancel}

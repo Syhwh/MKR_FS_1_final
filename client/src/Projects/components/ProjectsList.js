@@ -1,21 +1,38 @@
 import React from 'react'
-import { ProjectCard } from './ProjectCard'
+import { Card } from 'react-bootstrap'
 
-export const ProjectsList = ({ projects, handleDelete, handleEdit,createTask,showTasks }) => {
+
+export const ProjectsList = ({ projects, handleSelect, handleEdit, handleDelete }) => {
 	return (
-		<div className='d-flex flex-column align-items-stretch ' >
-			{projects.map(({ projectTitle, projectDescription, _id }) => (
-				<ProjectCard
+		<>
+			{projects.map(({ projectTitle, _id }) => (
+				<Card
+					body
 					key={_id}
-					title={projectTitle}
-					description={projectDescription}
-					id={_id}
-					handleEdit={handleEdit}
-					handleDelete={handleDelete}
-					createTask={createTask}
-					showTasks={showTasks}
-				/>
+					style={{ marginBottom: '1rem', color: 'black', cursor: 'pointer' }}
+
+				>
+					<span onClick={() => handleSelect(_id)}>
+						{projectTitle}
+					</span>
+					<span className='ml-3'>
+
+						<button
+							onClick={() => handleEdit(_id)}
+							className='btn btn-outline-secondary btn-sm mr-2'
+							type='button' title='Edit'>
+							<i className='fa fa-edit'></i>
+						</button>
+						<button
+							onClick={() => handleDelete(_id)}
+							className='btn btn-outline-danger btn-sm '
+							type='button' title='Delete'>
+							<i className='fa fa-trash'></i>
+						</button>
+					</span>
+				</Card>
 			))}
-		</div>
+		</>
+
 	)
 }

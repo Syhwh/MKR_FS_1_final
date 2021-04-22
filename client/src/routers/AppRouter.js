@@ -17,8 +17,8 @@ import { Home } from '../Global/Home';
 export const AppRouter = () => {
   const { user } = useContext(AuthContext);
   return (<>
-    {user ? <AppNavigation /> : <HomeNavigation />}
     <Router>
+    {user ? <AppNavigation /> : <HomeNavigation />}
       <div>
         <Switch>
           <PrivateRoute

@@ -33,7 +33,7 @@ export const ProjectsRouter = () => {
 					/>
 					<PrivateRoute
 						path={`/projects/:id`}
-						component={EditProject}
+						component={ProjectsPage}
 						isAuthenticated={user}
 					/>
 				</Switch>

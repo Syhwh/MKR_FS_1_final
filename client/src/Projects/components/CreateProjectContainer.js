@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router';
+import { useHistory, useLocation, useParams, } from 'react-router';
 import { ProjectsContext } from '../../Global/Context/ProjectsContext';
+import { useQuery } from '../../Global/customHooks/useQuery';
 import { CreateProjectView } from './CreateProjectView'
 
 export const CreateProjectContainer = ({ setShowForm }) => {
@@ -8,8 +9,9 @@ export const CreateProjectContainer = ({ setShowForm }) => {
 
 	const { id } = useParams();
 	const history = useHistory();
+const	query = useQuery()
 
-
+console.log(query.get('edit'))
 	const [values, setValues] = useState({
 		title: '',
 		description: '',
@@ -32,9 +34,7 @@ export const CreateProjectContainer = ({ setShowForm }) => {
 	};
 
 	const submitForm = () => {
-		if (id) {
-			console.log('edit project')
-			console.log(id)
+		if (id && query.get()) {
 			editProject(id, values.title, values.description)
 			history.push('/projects');
 		} else {
@@ -53,6 +53,7 @@ export const CreateProjectContainer = ({ setShowForm }) => {
 	}
 
 	useEffect(() => {
+
 		if (projects && id) {
 			const [project] = projects.filter(project => project._id === id);
 			setValues({

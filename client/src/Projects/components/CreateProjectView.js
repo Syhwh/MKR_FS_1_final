@@ -24,23 +24,21 @@ export const CreateProjectView = ({ handleSubmit, values, handleChange, handleCa
           value={values.description}
         />
       </Form.Group>
-      <Row className="justify-content-md-center">
-        <Col xs={6} md={4}>
-          <Button
-            onClick={handleCancel}
-            variant='danger'
-            type='submit'
-          > Cancel
+      <Row className='justify-content-around'>
+        <Button
+          onClick={handleCancel}
+          variant='danger'
+          type='submit'
+        > Cancel
       </Button>
-        </Col>
-        <Col xs={6} md={4}>
-          <Button
-            onClick={handleSubmit}
-            variant='success'
-            type='submit'
-          > Save Project
+
+        <Button
+          onClick={handleSubmit}
+          variant='success'
+          type='submit'
+        > Save Project
       </Button>
-        </Col>
+
       </Row>
     </Form>
   )
